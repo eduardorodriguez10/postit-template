@@ -1,0 +1,15 @@
+
+<%= form_for @post do |f| %>
+	<%= f.label :title %>
+	<%= f.text_field :title %>
+	<br/>
+	<%= f.label :url %>
+	<%= f.text_field :url %>
+	<br/>
+	<% if request.fullpath.=="/posts/new" %>
+		<%= f.submit "Create Post", class: 'btn btn-primary' %>
+	<% else %>
+		<%= f.submit "Update Post", class: 'btn btn-primary' %>
+	<% end %>
+	
+<% end %>

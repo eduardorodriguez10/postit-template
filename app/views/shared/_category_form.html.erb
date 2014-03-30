@@ -1,0 +1,10 @@
+<%= form_for @category do |f| %>
+	<%= f.label :name %>
+	<%= f.text_field :name %>
+	<br/>
+	<% if request.fullpath.=="/categories/new" %>
+		<%= f.submit "Create Category", class: 'btn btn-primary' %>
+	<% else %>
+		<%= f.submit "Update Category", class: 'btn btn-primary' %>
+	<% end %>
+<% end %>
