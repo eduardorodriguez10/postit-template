@@ -1,12 +1,16 @@
 class CategoriesController < ApplicationController
 
 	before_action :set_category, only: [:show, :edit, :update]
+	before_action :require_user, except: [:index, :show]
 	
 	def index
 		@categories = Category.all
 	end
 
-	def show; end
+	def show
+		@pcs = PostCategory.where(category_id: @category.id)
+		@posts = Post.where(id: @pcs.pluck(:post_id))
+	end
 
 	def edit; end
 

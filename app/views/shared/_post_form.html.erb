@@ -6,6 +6,10 @@
 	<%= f.label :url %>
 	<%= f.text_field :url %>
 	<br/>
+	<%= f.collection_select :category_ids, Category.all, :id, :name, {}, {:multiple => true} do |cb| %>
+		<% cb.label(class: "checkbox inline") {cb.check_box(class: "checkbox") + cb.text} %>
+	<% end %>
+	<br/><br/>
 	<% if request.fullpath.=="/posts/new" %>
 		<%= f.submit "Create Post", class: 'btn btn-primary' %>
 	<% else %>

@@ -1,5 +1,6 @@
+<%= render 'shared/display_errors', obj: @comment %>
 <p>
-		<%= render @post.categories %>
+	<%= render @post.categories %>
 </p>
 <%= render 'shared/content_title', title: @post.title %>
 
@@ -7,3 +8,12 @@
 	<%= @post.description %> 
 </p>
 <br/>
+
+<%= render 'shared/comments_form' if logged_in? %>
+
+<br/>
+<h3>Comments:</h3>
+
+<% @post.comments.sort_by{|x| x.total_votes}.reverse.each do |comment| %>
+	<%= render 'comments/comment', comment: comment, show_post: false %>
+<% end %>
